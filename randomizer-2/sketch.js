@@ -15,28 +15,14 @@ let games = [{
 let randomIndex;
 // let counter = 0;
 let animating = false;
-let Animals = [];
-let imageCounter = 0;
-let button;
-
-function preload() {
-
-  for (let i = 0; i <= 5; i++)
-
-    Animals[i] = loadImage(`assets/animal_${i}.jpg`)
-
-}
-
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(400, 400);
   background(200);
   textSize(32);
-  imageMode(CENTER);
-  frameRate(8);
 
   text("click to randomize", 50, 50);
-  console.log(Animals);
+
   // This is play changing BACKGROUND COLOR
   // setTimeout(changeBackground, 1000);
   // setInterval(changeBackground, 1000);
@@ -63,21 +49,12 @@ function setup() {
   // console.log(games[0].name);
   // console.log(games[0].mechanic);
 
-  button = createButton("click to randomize");
-  button.mousePressed(buttonPressed);
+
 }
 
 function draw() {
   if (animating == true) {
-    clear(); //wipe & clean canvas
-    image(Animals[imageCounter], width / 2, height / 2);
-
-    if (imageCounter < Animals.length - 1) {
-      imageCounter++;
-      // ellipse(random(width), random(height), random(50, 200));
-    } else {
-      imageCounter = 0;
-    }
+    ellipse(random(width), random(height), random(50, 200));
   }
 
 
@@ -95,26 +72,21 @@ function draw() {
 // }
 
 function randomizer() {
-  animating = false;
+  animating = false; //end animation
 
-  if (games[0]) {
-    // background(random(200, 220));
+  if (games[0]) { // if sth is sill in the arrau, then pull a random item and splice it out
+    background(random(200, 220));
     //Pull Random Item
     // console.log(random(5));
-    clear();
-    randomIndex = int(random(games.length));
+    randomIndex = int(random(games.length)); //random thing to pull via a random index number
     // console.log(games[randomIndex].name);
-
-    image(random(Animals), width / 2, height / 2);
-
     text(`${games[randomIndex].name}'s mechanic is
-     ${games[randomIndex].mechanic}`, width /2, height /1.5 ); /*number means position on canvas*/
+     ${games[randomIndex].mechanic}`, 50, 50 /*number means position on canvas*/ );
     // text(games[randomIndex].name + "'s mechanic is "
     //+ games[randomIndex].mechanic, 50, 50 /*number means position on canvas*/ );
     //And other code: text(`${games.name} hahaha`, 50, 50);
-
     //delete it out of random index
-    games.splice(randomIndex, 1);
+    games.splice(randomIndex, 1); // splice out of array
     // console.log(games);
   } else {
     background(random(200, 220));
@@ -122,10 +94,12 @@ function randomizer() {
   }
 }
 
-function buttonPressed() {
+function mousePressed() {
   animating = true;
-  setTimeout(randomizer, 2000);
 
+  //when mouse is pressed, it will draw shapes.
+  setTimeout(randomizer, 2000);
+  //sets a timer for 3 sec - at end of it, calls function call randonmizer
   // if (games[0]) {
   //   background(random(200, 220));
   //   //Pull Random Item
