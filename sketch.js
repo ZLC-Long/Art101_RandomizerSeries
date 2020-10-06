@@ -23,7 +23,7 @@ function preload() {
 
   for (let i = 0; i <= 5; i++)
 
-    Animals[i] = loadImage(`assets/Animal_${i}.JPG`)
+    Animals[i] = loadImage(`https://zlc-long.github.io/randomizer/assets/Animal_${i}.JPG`)
 
 }
 
