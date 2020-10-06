@@ -23,7 +23,7 @@ function preload() {
 
   for (let i = 0; i <= 5; i++)
 
-    Animals[i] = loadImage(`./assets/animal_${i}.jpg`)
+    Animals[i] = loadImage(`assets/animal_${i}.jpg`)
 
 }
 
