@@ -1,48 +1,40 @@
-let games = ["game 1", "game 2"];
-  // {
-  //   name: "cards",
-  //   mechanic: "bluffing"
-  // },
-  // {
-  //   name: "2D",
-  //   mechanic: "pixel"
-  // },
-  // {
-  //   name: "racing",
-  //   mechanic: "Time track"
-  // } /*, "fps", "sandbox"*/
-
+// let games = [{
+//     name: "cards",
+//     mechanic: "bluffing"
+//   },
+//   {
+//     name: "2D",
+//     mechanic: "pixel"
+//   },
+//   {
+//     name: "racing",
+//     mechanic: "Time track"
+//   } /*, "fps", "sandbox"*/
+// ];
 
 let randomIndex;
 // let counter = 0;
 let animating = false;
 let Animals = [];
 let imageCounter = 0;
+let button;
 let startRandomizerButton;
-let addMoreButton;
-let cnv;
-let nameInputs = [];
-let firstTime = true;
 
 function preload() {
 
-  for (let i = 0; i <= 5; i++)
-
+  for (let i = 0; i <= 7; i++)
     Animals[i] = loadImage(`assets/animal_${i}.jpg`)
-
 }
 
 
 function setup() {
-  cnv = createCanvas(500, 500);
-  cnv.parent("#canvasDiv");
-
+  createCanvas(500, 500);
   background(200);
   textSize(32);
   imageMode(CENTER);
   frameRate(8);
 
-  text("click to randomize", 50, 50);
+  text("↓↓↓Click the above button↓↓↓", 35, 250);
   console.log(Animals);
   // This is play changing BACKGROUND COLOR
   // setTimeout(changeBackground, 1000);
@@ -69,25 +61,11 @@ function setup() {
 
   // console.log(games[0].name);
   // console.log(games[0].mechanic);
-
-  // button = createButton("click to randomize");
   startRandomizerButton = select('#randButton');
   startRandomizerButton.mousePressed(buttonPressed);
-  // button.class("randomizerButton");
-
-  addMoreButton = select('#addMoreButton');
-  addMoreButton.mousePressed(addAnotherInput);
-
-  for (let i = 0; i < 3; i++) {
-
-    nameInputs.push(createInput()); // nameInput = createInput();
-    nameInputs[nameInputs.length - 1].parent("#inputFields");
-  }
-
 }
 
 function draw() {
-
   if (animating == true) {
     clear(); //wipe & clean canvas
     image(Animals[imageCounter], width / 2, height / 2);
@@ -99,15 +77,6 @@ function draw() {
       imageCounter = 0;
     }
   }
-
-
-}
-
-function addAnotherInput() {
-  nameInputs.push(createInput()); // nameInput = createInput();
-  nameInputs[nameInputs.length - 1].parent("#inputFields");
-
-
 }
 // This is play to TIMEOUT changing BACKGROUND function
 // function changeBackground() {
@@ -133,7 +102,7 @@ function randomizer() {
 
     image(random(Animals), width / 2, height / 2);
 
-    text(`${games[randomIndex]}'s mechanic is
+    text(`${games[randomIndex].name}'s mechanic is
      ${games[randomIndex].mechanic}`, width / 2, height / 1.5); /*number means position on canvas*/
     // text(games[randomIndex].name + "'s mechanic is "
     //+ games[randomIndex].mechanic, 50, 50 /*number means position on canvas*/ );
@@ -143,23 +112,13 @@ function randomizer() {
     games.splice(randomIndex, 1);
     // console.log(games);
   }
-
-  else {
-    background(random(200, 220));
-    text("nothing left!!", 50, 50)
-  }
-  
+  // else {
+  //   background(random(200, 220));
+  //   text("nothing left!!", 50, 50)
+  // }
 }
 
 function buttonPressed() {
-
-  if (firstTime) {
-  for (let i = 0; i < nameInputs.length; i++) {
-      games.push(nameInputs[i].value());
-      }
-      firstTime = false;
-}
-
   animating = true;
   setTimeout(randomizer, 2000);
 

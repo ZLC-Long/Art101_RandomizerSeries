@@ -142,13 +142,10 @@ function randomizer() {
     //delete it out of random index
     games.splice(randomIndex, 1);
     // console.log(games);
-  }
-
-  else {
+  } else {
     background(random(200, 220));
     text("nothing left!!", 50, 50)
   }
-  
 }
 
 function buttonPressed() {

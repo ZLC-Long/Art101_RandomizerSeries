@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.randomizerButton {
+  padding: 20px;
+  /* button.style("padding","20px"); */
+  background-color: #a89e32;
+  /* button.style("background-color","#a89e32"); */
+}
+
+.row{
+  display: flex;
+
+}
+.column{
+  margin: 10px;
+  flex: 50%;
+}
