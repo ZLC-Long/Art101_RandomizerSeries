@@ -34,7 +34,7 @@ function setup() {
   imageMode(CENTER);
   frameRate(8);
 
-  text("↓↓↓Click the above button↓↓↓", 35, 250);
+  text("↓↓↓Click the button below↓↓↓", 35, 250);
   console.log(Animals);
   // This is play changing BACKGROUND COLOR
   // setTimeout(changeBackground, 1000);
